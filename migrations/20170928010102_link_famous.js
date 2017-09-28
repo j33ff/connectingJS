@@ -10,6 +10,10 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   return Promise.all([
+    knex.schema.table('milestones', function (table) {
+      table.dropForeign('famous_people_id');
+      table.dropColumn('famous_people_id');
+    })
 
   ]);
 };
